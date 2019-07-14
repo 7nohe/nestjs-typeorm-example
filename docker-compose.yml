@@ -1,7 +1,7 @@
 version: "3"
 services:
   nest-app-web:
-    image: nestjs/cli:4a057147383bf3a77c0f46677209242669a0a6e5 #nest/cli:6.5.0
+    build: .
     ports:
       - 3040:3000
     volumes:
