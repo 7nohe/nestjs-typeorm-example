@@ -1,0 +1,24 @@
+version: "3"
+services:
+  nest-app-web:
+    image: nestjs/cli:4a057147383bf3a77c0f46677209242669a0a6e5 #nest/cli:6.5.0
+    ports:
+      - 3040:3000
+    volumes:
+      - ./:/workspace/
+    links:
+      - nest-app-db
+    tty: true
+  nest-app-db:
+    image: mysql:5.7
+    volumes:
+      - mysql-data
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_DATABASE: "root"
+    ports:
+      - 13306:3306
+volumes:
+  mysql-data:
