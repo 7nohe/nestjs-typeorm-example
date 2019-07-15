@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostModule } from './post/post.module';
-import { join } from 'path';
+import { getMetadataArgsStorage } from 'typeorm';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { join } from 'path';
       username: 'root',
       password: 'root',
       database: 'root',
-      entities: [join(__dirname, '**/**.entity{.ts,.js}')],
+      entities: getMetadataArgsStorage().tables.map(tbl => tbl.target),
       synchronize: true,
     }),
     PostModule,
