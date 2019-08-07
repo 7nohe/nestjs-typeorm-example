@@ -16,6 +16,7 @@ import { getMetadataArgsStorage } from 'typeorm';
       database: 'root',
       entities: getMetadataArgsStorage().tables.map(tbl => tbl.target),
       synchronize: true,
+      keepConnectionAlive: true,
     }),
     PostModule,
   ],
